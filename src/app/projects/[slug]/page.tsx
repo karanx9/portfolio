@@ -10,7 +10,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = params; // Extract slug from params
 
-  // Find the product based on the slug
+  // Find the product based on the slug, ensuring the product has a slug
   const product = products.find((p) => p.slug === slug) as Product | undefined;
 
   if (product) {
@@ -31,8 +31,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function ProjectPage({ params }: Props) {
   const { slug } = params;
 
-  // Find the product based on the slug
-  const product = products.find((p) => p.slug === slug) as Product | undefined;
+  // Find the product based on the slug, ensuring the product has a slug
+  const product = products.find(
+    (p) => p.slug && p.slug === slug
+  ) as Product | undefined;  // Ensure that we only access products with a slug
 
   if (!product) {
     return (
