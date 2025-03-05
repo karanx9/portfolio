@@ -1,3 +1,4 @@
+// src/app/projects/[slug]/page.tsx
 import { Metadata } from "next";
 import { products } from "@/constants/products";
 import { Product } from "@/types/products";
@@ -24,4 +25,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "John Doe is a developer, writer and speaker. He is a digital nomad and travels around the world while working remotely.",
     };
   }
+}
+
+// This is the Page Component for dynamic route [slug]
+export default function ProjectPage({ params }: Props) {
+  const { slug } = params;
+
+  // Find the product based on the slug
+  const product = products.find((p) => p.slug === slug) as Product | undefined;
+
+  if (!product) {
+    return (
+      <div>
+        <h1>Product not found</h1>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h1>{product.title}</h1>
+      <p>{product.description}</p>
+      {/* You can add more content here */}
+    </div>
+  );
 }
