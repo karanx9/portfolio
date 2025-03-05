@@ -9,6 +9,7 @@ import sidefolioTailwindMasterKit2 from "public/images/sidefolio-tailwindmasterk
 
 export const products = [
   {
+    slug: "selenium-pom-project",
     href: "https://github.com/karanx9/SeleniumPOM-Project",
     title: "Selenium Page Object Model(POM) ",
     description:
@@ -38,6 +39,7 @@ export const products = [
     ),
   },
   {
+    slug: "functional-testing-project",
     href: "https://github.com/karanx9/Functional-testing-project",
     title: "Functional Testing",
     description:
