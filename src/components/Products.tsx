@@ -14,7 +14,7 @@ export const Products = () => {
     <div className="grid grid-cols-1 gap-12">
       {products.map((product: Product, idx: number) => (
         <motion.div
-          key={product.href}
+          key={product.slug}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: idx * 0.1 }}
@@ -23,7 +23,7 @@ export const Products = () => {
           <div className="flex flex-col md:flex-row gap-8">
             <div className="w-full md:w-1/2">
               <Image
-                src={product.thumbnail}
+                src={product.image}
                 alt={product.title}
                 width={600}
                 height={400}
@@ -51,7 +51,7 @@ export const Products = () => {
 
               <div className="flex gap-4">
                 <a
-                  href={product.href}
+                  href={product.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 text-sm"

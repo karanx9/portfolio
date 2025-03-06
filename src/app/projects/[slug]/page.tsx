@@ -1,3 +1,5 @@
+"use client";
+
 // src/app/projects/[slug]/page.tsx
 import { Metadata } from "next";
 import { products } from "@/constants/products";
@@ -39,7 +41,7 @@ export default function Project({ params }: Props) {
 
   // Find the product based on the slug, ensuring the product has a slug
   const product = products.find(
-    (p) => p.slug && p.slug === slug
+    (p) => p.slug === slug
   ) as Product | undefined;  // Ensure that we only access products with a slug
 
   if (!product) {
