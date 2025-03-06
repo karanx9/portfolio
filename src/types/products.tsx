@@ -9,5 +9,5 @@ export type Product = {
   slug?: string;
   stack?: string[];
   content?: React.ReactNode | string;
-  
+  demoUrl?: string;
 };

@@ -1,9 +1,9 @@
 import {
-  IconArticle,
   IconBolt,
+  IconMessage2,
   IconBriefcase2,
   IconMail,
-  IconMessage2,
+  IconBriefcase,
 } from "@tabler/icons-react";
 
 export const navlinks = [
@@ -22,7 +22,11 @@ export const navlinks = [
     label: "Projects",
     icon: IconBriefcase2,
   },
- 
+  {
+    href: "/resume",
+    label: "Work History",
+    icon: IconBriefcase,
+  },
   {
     href: "/contact",
     label: "Contact",

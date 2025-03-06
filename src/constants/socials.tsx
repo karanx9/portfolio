@@ -1,19 +1,35 @@
 import {
-  IconBrandGithub,
-  IconBrandLinkedin,
-  IconBrandTwitter,
-  IconBrandYoutube,
+  IconTestPipe,
+  IconBug,
+  IconCode,
+  IconTools,
+  IconDeviceLaptop
 } from "@tabler/icons-react";
 
-export const socials = [
+export const skills = [
   {
-    href: "https://www.linkedin.com/in/karan-soni-6263412b4/",
-    label: "LinkedIn",
-    icon: IconBrandLinkedin,
+    href: "#",
+    label: "Test Automation",
+    icon: IconTestPipe,
   },
   {
-    href: "https://github.com/karanx9",
-    label: "Github",
-    icon: IconBrandGithub,
+    href: "#",
+    label: "Quality Assurance",
+    icon: IconBug,
   },
+  {
+    href: "#",
+    label: "Java & Selenium",
+    icon: IconCode,
+  },
+  {
+    href: "#",
+    label: "API Testing",
+    icon: IconTools,
+  },
+  {
+    href: "#",
+    label: "Mobile Testing",
+    icon: IconDeviceLaptop,
+  }
 ];

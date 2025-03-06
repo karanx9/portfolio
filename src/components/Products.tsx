@@ -7,59 +7,63 @@ import Link from "next/link";
 import Image from "next/image";
 import { Paragraph } from "./Paragraph";
 import { motion } from "framer-motion";
+import { FaGithub } from 'react-icons/fa';
 
 export const Products = () => {
   return (
-    <div>
-      <div className="grid grid-cols-1 gap-10">
-        {products.map((product: Product, idx: number) => (
-          <motion.div
-            key={product.href} // Key for motion.div
-            initial={{
-              opacity: 0,
-              x: -50,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-            }}
-            transition={{ duration: 0.2, delay: idx * 0.1 }}
-          >
-            <Link
-              href={product.slug ? `/projects/${product.slug}` : product.href}
-              className="group flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 hover:bg-gray-50 rounded-2xl transition duration-200 pt-4"
-            >
+    <div className="grid grid-cols-1 gap-12">
+      {products.map((product: Product, idx: number) => (
+        <motion.div
+          key={product.href}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: idx * 0.1 }}
+          className="group relative bg-white rounded-2xl p-6 hover:shadow-xl transition-all duration-300"
+        >
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="w-full md:w-1/2">
               <Image
                 src={product.thumbnail}
-                alt="thumbnail"
-                height="200"
-                width="200"
-                className="rounded-md"
+                alt={product.title}
+                width={600}
+                height={400}
+                className="rounded-xl object-cover w-full h-[300px]"
               />
-              <div className="flex flex-col justify-between">
-                <div>
-                  <Heading as="h4" className="font-black text-lg md:text-lg lg:text-lg">
-                    {product.title}
-                  </Heading>
-                  <Paragraph className="text-sm md:text-sm lg:text-sm mt-2 max-w-xl">
-                    {product.description}
-                  </Paragraph>
-                </div>
-                <div className="flex space-x-2 md:mb-1 mt-2 md:mt-0">
-                  {product.stack?.map((stack: string) => (
-                    <span
-                      key={stack}
-                      className="text-xs md:text-xs lg:text-xs bg-gray-50 px-2 py-1 rounded-sm text-secondary"
-                    >
-                      {stack}
-                    </span>
-                  ))}
-                </div>
+            </div>
+            <div className="flex-1">
+              <Heading as="h3" className="text-xl font-bold text-gray-800 mb-3">
+                {product.title}
+              </Heading>
+              <Paragraph className="text-gray-600 mb-4">
+                {product.description}
+              </Paragraph>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {product.stack?.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors duration-200"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
+
+              <div className="flex gap-4">
+                <a
+                  href={product.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 text-sm"
+                >
+                  <FaGithub className="w-4 h-4" />
+                  View Source
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      ))}
     </div>
   );
 };

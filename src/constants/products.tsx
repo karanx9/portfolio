@@ -13,60 +13,17 @@ export const products = [
     href: "https://github.com/karanx9/SeleniumPOM-Project",
     title: "Selenium Page Object Model(POM) ",
     description:
-      " Developed an automated testing framework using Selenium WebDriver to enhance testing efficiency and reliability. Ran automated test scenarios to verify functionality, user interactions, and data integrity in the Consumer Electronics domain.",
+      "Developed an automated testing framework using Selenium WebDriver to enhance testing efficiency and reliability. Ran automated test scenarios to verify functionality, user interactions, and data integrity in the Consumer Electronics domain.",
     thumbnail: sidefolioAceternity,
-   
-    stack: ["Selenium", "Java","TestNg","BDD Cucumber"],
-    content: (
-      <div>
-        <p>
-          Sit eiusmod ex mollit sit quis ad deserunt. Sint aliqua aliqua ullamco
-          dolore nulla amet tempor sunt est ipsum. Dolor laborum eiusmod
-          cupidatat consectetur velit ipsum. Deserunt nisi in culpa laboris
-          cupidatat elit velit aute mollit nisi. Officia ad exercitation laboris
-          non cupidatat duis esse velit ut culpa et.{" "}
-        </p>
-        <p>
-          Exercitation pariatur enim occaecat adipisicing nostrud adipisicing
-          Lorem tempor ullamco exercitation quis et dolor sint. Adipisicing sunt
-          sit aute fugiat incididunt nostrud consequat proident fugiat id.
-          Officia aliquip laborum labore eu culpa dolor reprehenderit eu ex enim
-          reprehenderit. Cillum Lorem veniam eu magna exercitation.
-          Reprehenderit adipisicing minim et officia enim et veniam Lorem
-          excepteur velit adipisicing et Lorem magna.
-        </p>{" "}
-      </div>
-    ),
+    stack: ["Selenium", "Java", "TestNg", "BDD Cucumber"],
   },
   {
     slug: "functional-testing-project",
     href: "https://github.com/karanx9/Functional-testing-project",
     title: "Functional Testing",
     description:
-      "Designed and executed comprehensive test plans and cases, ensuring thorough coverage of application functionality and user scenarios.Conducted manual, regression, functional, and UI testing to identify software issues, focusing on algorithmic and logic errors",
+      "Designed and executed comprehensive test plans and cases, ensuring thorough coverage of application functionality and user scenarios. Conducted manual, regression, functional, and UI testing to identify software issues, focusing on algorithmic and logic errors",
     thumbnail: sidefolioAlgochurn,
-    images: [sidefolioAlgochurn, sidefolioAlgochurn2],
-    stack: ["Test Plan", "Test Case","Functional Testing","Defect Report"],
-    content: (
-      <div>
-        <p>
-          Sit eiusmod ex mollit sit quis ad deserunt. Sint aliqua aliqua ullamco
-          dolore nulla amet tempor sunt est ipsum. Dolor laborum eiusmod
-          cupidatat consectetur velit ipsum. Deserunt nisi in culpa laboris
-          cupidatat elit velit aute mollit nisi. Officia ad exercitation laboris
-          non cupidatat duis esse velit ut culpa et.{" "}
-        </p>
-        <p>
-          Exercitation pariatur enim occaecat adipisicing nostrud adipisicing
-          Lorem tempor ullamco exercitation quis et dolor sint. Adipisicing sunt
-          sit aute fugiat incididunt nostrud consequat proident fugiat id.
-          Officia aliquip laborum labore eu culpa dolor reprehenderit eu ex enim
-          reprehenderit. Cillum Lorem veniam eu magna exercitation.
-          Reprehenderit adipisicing minim et officia enim et veniam Lorem
-          excepteur velit adipisicing et Lorem magna.
-        </p>{" "}
-      </div>
-    ),
+    stack: ["Test Plan", "Test Case", "Functional Testing", "Defect Report"],
   },
-  
 ];
