@@ -2,12 +2,13 @@ import { StaticImageData } from "next/image";
 
 export type Product = {
   title: string;
+  slug: string;
   description: string;
-  thumbnail: StaticImageData;
-  images?: StaticImageData[] | string[];
-  href: string;
-  slug?: string;
+  image: string;
+  images?: string[];
   stack?: string[];
-  content?: React.ReactNode | string;
+  githubUrl?: string;
   demoUrl?: string;
+  content?: string;
 };
+

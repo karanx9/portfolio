@@ -52,7 +52,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
           >
-            Hello, I'm Karan Soni
+            Hello, I&apos;m Karan Soni
           </motion.h1>
           
           <motion.div
@@ -72,7 +72,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="text-lg text-gray-600 max-w-2xl mx-auto mb-8"
           >
-            I'm passionate about <Highlight>Quality Analysis of Software and Web Applications</Highlight>,
+            I&apos;m passionate about <Highlight>Quality Analysis of Software and Web Applications</Highlight>,
             dedicated to delivering bug-free solutions that enhance the user experience.
           </motion.p>
 
@@ -126,7 +126,7 @@ export default function Home() {
           as="h2"
           className="font-black text-lg md:text-lg lg:text-lg mt-20 mb-4"
         >
-          What I've been working on
+          What I&apos;ve been working on
         </Heading>
         <Products />
         <TechStack />
