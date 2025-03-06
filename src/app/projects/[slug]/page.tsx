@@ -1,11 +1,10 @@
 "use client";
 
 // src/app/projects/[slug]/page.tsx
-import { Metadata } from "next";
-import { products } from "@/constants/products";
-import { Product } from "@/types/products";
 import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
+import { products } from "@/constants/products";
+import { Product } from "@/types/products";
 import Image from "next/image";
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { motion } from "framer-motion";
@@ -13,36 +12,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: { slug: string };  // Destructure 'slug' from params
+  params: { slug: string };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = params; // Extract slug from params
-
-  // Find the product based on the slug, ensuring the product has a slug
-  const product = products.find((p) => p.slug === slug) as Product | undefined;
-
-  if (product) {
-    return {
-      title: `${product.title} | Karan Soni`,
-      description: product.description,
-    };
-  } else {
-    return {
-      title: "Project Not Found | Karan Soni",
-      description: "The requested project could not be found.",
-    };
-  }
-}
-
-// This is the Page Component for dynamic route [slug]
 export default function Project({ params }: Props) {
   const { slug } = params;
 
-  // Find the product based on the slug, ensuring the product has a slug
   const product = products.find(
     (p) => p.slug === slug
-  ) as Product | undefined;  // Ensure that we only access products with a slug
+  ) as Product | undefined;
 
   if (!product) {
     notFound();
