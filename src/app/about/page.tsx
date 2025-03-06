@@ -4,7 +4,7 @@ import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
 import { Highlight } from "@/components/Highlight";
 import { motion } from "framer-motion";
-import { FaCode, FaTools, FaBug, FaRobot, FaCheckCircle, FaGraduationCap, FaCertificate } from "react-icons/fa";
+import { FaCode, FaTools, FaBug, FaRobot, FaCheckCircle, FaCertificate } from "react-icons/fa";
 import Image from "next/image";
 
 export default function About() {
@@ -47,15 +47,6 @@ export default function About() {
     {
       title: "Process Optimization",
       description: "Streamlined QA processes reducing testing cycle time by 40%"
-    }
-  ];
-
-  const education = [
-    {
-      degree: "Bachelor of Engineering",
-      field: "Computer Science",
-      year: "2022",
-      institution: "Savitribai Phule Pune University"
     }
   ];
 
@@ -165,36 +156,6 @@ export default function About() {
                 <FaCertificate className="w-8 h-8 text-blue-500 mb-4" />
                 <h3 className="text-lg font-semibold mb-2">{achievement.title}</h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">{achievement.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Education Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-        >
-          <Heading as="h2" className="text-2xl font-bold mb-8 text-center">
-            Education
-          </Heading>
-          <div className="grid grid-cols-1 gap-6">
-            {education.map((edu, index) => (
-              <motion.div
-                key={edu.degree}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
-              >
-                <div className="flex items-center mb-2">
-                  <FaGraduationCap className="w-6 h-6 text-blue-500 mr-3" />
-                  <h3 className="text-xl font-semibold">{edu.degree}</h3>
-                </div>
-                <p className="text-gray-600 dark:text-gray-300">{edu.field}</p>
-                <p className="text-gray-500 dark:text-gray-400">{edu.institution}</p>
-                <p className="text-gray-500 dark:text-gray-400">{edu.year}</p>
               </motion.div>
             ))}
           </div>
