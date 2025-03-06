@@ -1,108 +1,110 @@
 "use client";
-import { Product } from "@/types/products";
+import { Product as ProductType } from "@/types/products";
 import Image, { StaticImageData } from "next/image";
 import React, { useState } from "react";
 import { Heading } from "./Heading";
 import { Paragraph } from "./Paragraph";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
-export const SingleProduct = ({ product }: { product: Product }) => {
-  // Set activeImage to product.thumbnail initially, or fall back to the first image in product.images
-  const [activeImage, setActiveImage] = useState<StaticImageData | string>(
-    product.images && product.images.length > 0 ? product.images[0] : product.thumbnail
+export const Product = ({ product }: { product: ProductType }) => {
+  // Set activeImage to product.image initially, or fall back to the first image in product.images
+  const [activeImage, setActiveImage] = useState<string>(
+    product.images && product.images.length > 0 ? product.images[0] : product.image
   );
 
   return (
-    <div className="py-10">
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 30,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 0.5,
-        }}
-        key={product.slug}
-        className="relative"
-      >
-        <Image
-          src={activeImage}
-          alt="thumbnail"
-          height="1000"
-          width="1000"
-          className="rounded-md object-contain"
-        />
-        <div className="absolute bottom-0 bg-white h-40 w-full [mask-image:linear-gradient(to_bottom,transparent,white)]" />
-      </motion.div>
-
-      {/* Check if images exist before rendering the thumbnails */}
-      {product.images && product.images.length > 0 && (
-        <div className="flex flex-row justify-center my-8 flex-wrap">
-          {product.images.map((image, idx) => (
-            <button
-              onClick={() => setActiveImage(image)}
-              key={`image-thumbnail-${idx}`}
-            >
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 hover:shadow-xl transition-all duration-300"
+    >
+      <div className="flex flex-col md:flex-row gap-8">
+        <div className="w-full md:w-1/2">
+          <Link href={`/projects/${product.slug}`}>
+            <div className="relative overflow-hidden rounded-xl">
               <Image
-                src={image}
-                alt="product thumbnail"
-                height="1000"
-                width="1000"
-                className="h-14 w-16 md:h-40 md:w-60 object-cover object-top mr-4 mb-r border rounded-lg border-neutral-100"
+                src={activeImage}
+                alt={product.title}
+                width={600}
+                height={400}
+                className="rounded-xl object-cover w-full h-[300px] group-hover:scale-105 transition-transform duration-300"
               />
-            </button>
-          ))}
+            </div>
+          </Link>
+          {product.images && product.images.length > 0 && (
+            <div className="flex gap-2 mt-4">
+              {[product.image, ...product.images].map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveImage(img)}
+                  className={`w-12 h-12 rounded-lg overflow-hidden border-2 transition-colors ${
+                    activeImage === img
+                      ? "border-blue-500"
+                      : "border-transparent hover:border-blue-300"
+                  }`}
+                >
+                  <Image
+                    src={img}
+                    alt={`${product.title} preview ${idx + 1}`}
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
-      )}
+        <div className="flex-1">
+          <Link href={`/projects/${product.slug}`}>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {product.title}
+            </h3>
+          </Link>
+          <p className="text-gray-600 dark:text-gray-300 mb-4">
+            {product.description}
+          </p>
 
-      <div className="flex lg:flex-row justify-between items-center flex-col mt-20">
-        <Heading className="font-black mb-2 pb-1"> {product.title}</Heading>
-        <div className="flex space-x-2 md:mb-1 mt-2 md:mt-0">
-          {product.stack?.map((stack: string) => (
-            <span
-              key={stack}
-              className="text-xs  md:text-xs lg:text-xs bg-gray-50 px-2 py-1 rounded-sm text-secondary"
-            >
-              {stack}
-            </span>
-          ))}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {product.stack?.map((tech) => (
+              <span
+                key={tech}
+                className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex gap-4">
+            {product.githubUrl && (
+              <a
+                href={product.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 text-sm"
+              >
+                <FaGithub className="w-4 h-4" />
+                View Source
+              </a>
+            )}
+            {product.demoUrl && (
+              <a
+                href={product.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm"
+              >
+                <FaExternalLinkAlt className="w-4 h-4" />
+                Live Demo
+              </a>
+            )}
+          </div>
         </div>
       </div>
-      <div>
-        <Paragraph className="max-w-xl mt-4">{product.description}</Paragraph>
-      </div>
-      <div className="prose prose-sm md:prose-base max-w-none text-neutral-600">
-        {product?.content}
-      </div>
-
-      <a
-        href={product.href}
-        target="__blank"
-        className="inline-flex items-center gap-1 group/button rounded-full hover:scale-105 focus:outline-none transition ring-offset-gray-900 bg-gray-800 text-white shadow-lg shadow-black/20 sm:backdrop-blur-sm group-hover/button:bg-gray-50/15 group-hover/button:scale-105 focus-visible:ring-1 focus-visible:ring-offset-2 ring-gray-50/60 text-sm font-medium px-4 py-2 mt-auto origin-left"
-      >
-        Live Preview
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
-        >
-          <path d="M5 12l14 0"></path>
-          <path d="M13 18l6 -6"></path>
-          <path d="M13 6l6 6"></path>
-        </svg>
-      </a>
-    </div>
+    </motion.div>
   );
 };
