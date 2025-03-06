@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About | Karan Soni",
-  description: "Learn more about Karan Soni, a skilled SDET/QA expert with expertise in test automation, quality assurance, and software testing.",
+  description: "Dynamic SDET/QA expert with expertise in test automation, API testing, and quality assurance. Experienced in Selenium, Appium, and various testing frameworks."
 };
 
 export default function AboutLayout({
@@ -10,5 +10,5 @@ export default function AboutLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return <>{children}</>;
 } 
